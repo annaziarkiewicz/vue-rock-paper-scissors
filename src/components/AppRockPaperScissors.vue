@@ -30,8 +30,8 @@
 
 <script lang="ts" setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import GameDashboard from "@/components/GameDashboard.vue"
-import GameWelcomeScreen from "@/components/GameWelcomeScreen.vue"
+import GameDashboard from '@/components/GameDashboard.vue'
+import GameWelcomeScreen from '@/components/GameWelcomeScreen.vue'
 
 import rosePlayer from '@/assets/rose.png'
 import mintPlayer from '@/assets/mint.png'
@@ -50,8 +50,8 @@ type Choice = 'rock' | 'paper' | 'scissors'
 type Player = 'rose' | 'mint'
 type RoundResult = Player | 'draw' | null
 
-const LOCK_TIME = 2000
-const CHOICES: Choice[] = ['rock', 'paper', 'scissors']
+const lockTime = 2000
+const choices: Choice[] = ['rock', 'paper', 'scissors']
 const canvasWidth = 840
 const canvasHeight = 500
 
@@ -166,7 +166,7 @@ const restartGame = () => {
 }
 
 const randomChoice = (): Choice =>
-    CHOICES[Math.floor(Math.random() * CHOICES.length)]
+    choices[Math.floor(Math.random() * choices.length)]
 
 const determineWinner = (user: Choice, ai: Choice) => {
     if (user === ai) return 'Draw'
@@ -209,7 +209,10 @@ const play = (choice: Choice) => {
         roseChoice.value = randomChoice()
     }
 
-    const result = determineWinner(choice, player.value === 'rose' ? mintChoice.value! : roseChoice.value!)
+    const result = determineWinner(
+        choice,
+        player.value === 'rose' ? mintChoice.value! : roseChoice.value!
+    )
     resultStatus.value = result
 
     setTimeout(() => {
@@ -218,7 +221,8 @@ const play = (choice: Choice) => {
         } else if (result.includes('won')) {
             results.value[currentRound.value] = player.value
         } else {
-            results.value[currentRound.value] = player.value === 'rose' ? 'mint' : 'rose'
+            results.value[currentRound.value] =
+                player.value === 'rose' ? 'mint' : 'rose'
         }
 
         currentRound.value++
@@ -229,7 +233,7 @@ const play = (choice: Choice) => {
         checkGameOver()
         isLocked.value = false
         drawBoard()
-    }, LOCK_TIME)
+    }, lockTime)
 }
 
 onMounted(() => {
@@ -245,7 +249,6 @@ watch([roseChoice, mintChoice], drawBoard)
     position: relative;
     overflow: hidden;
     width: 960px;
-    margin: 32px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
