@@ -21,7 +21,7 @@
             @restart="restartGame"
         />
 
-        <GameWelcomeScreen
+        <GameScreen
             v-if="isWelcomeScreen"
             @setPlayer="setPlayer"
         />
@@ -31,7 +31,7 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import GameDashboard from '@/components/GameDashboard.vue'
-import GameWelcomeScreen from '@/components/GameWelcomeScreen.vue'
+import GameScreen from '@/components/GameScreen.vue'
 
 import rosePlayer from '@/assets/rose.png'
 import mintPlayer from '@/assets/mint.png'

@@ -1,31 +1,31 @@
 <template>
-    <div class="az-welcome-screen">
-        <div class="az-welcome-screen__heading">
+    <div class="az-game-screen">
+        <div class="az-game-screen__heading">
             Vue.js Rock Paper Scissors
         </div>
 
-        <div class="az-welcome-screen__subtitle">
+        <div class="az-game-screen__subtitle">
             This is a classic hand game where you play against the computer in a match of 5&nbsp;rounds.<br />
             Rock beats scissors, scissors beats paper, and paper beats rock.
         </div>
 
-        <div class="az-welcome-screen__paragraph">
+        <div class="az-game-screen__paragraph">
             Choose your player from two characters:
         </div>
 
-        <div class="az-welcome-screen__players">
+        <div class="az-game-screen__players">
             <div
                 v-for="player in players"
                 :key="player.id"
-                class="az-welcome-screen__player"
+                class="az-game-screen__player"
             >
                 <div class="az-welcome-screen__player-avatar">
                     <img :src="player.avatar" :alt="player.label" />
                 </div>
 
                 <button
-                    class="az-welcome-screen__button"
-                    :class="`az-welcome-screen__button--${player.id}`"
+                    class="az-game-screen__button"
+                    :class="`az-game-screen__button--${player.id}`"
                     @click="$emit('setPlayer', player.id)"
                 >
                     {{ player.label }}
@@ -51,7 +51,7 @@ const players = [
 </script>
 
 <style lang="scss" scoped>
-.az-welcome-screen {
+.az-game-screen {
     position: absolute;
     top: 0;
     width: 100%;
@@ -129,10 +129,10 @@ const players = [
         }
 
         &--mint {
-            background: $color-mint-200;
+            background: $color-mint-300;
 
             &:hover {
-                background: $color-mint-300;
+                background: $color-mint-400;
             }
         }
     }
