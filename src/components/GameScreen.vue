@@ -113,7 +113,7 @@ const players = [
 
     &__button {
         width: 100%;
-        padding: 12px;
+        padding: 16px;
         border-radius: 12px;
         font-size: 18px;
         font-weight: 500;
